@@ -1,0 +1,45 @@
+[
+	{
+		"name": "World of Terre",
+		"is_open": true,
+		"layer": 0,
+		"type": "folder",
+		"content": [
+			{
+				"name": "Hastmen",
+				"is_open": true,
+				"layer": 1,
+				"type": "folder",
+				"content": [
+					{
+						"name": "Regions",
+						"is_open": true,
+						"layer": 2,
+						"type": "folder",
+						"content": [
+							{
+								"name": "Storm Coast",
+								"layer": 2,
+								"type": "file",
+								"file_name": "./files/test_info_page.json"
+							},
+							{
+								"name": "Westerlans",
+								"layer": 2,
+								"type": "file",
+								"file_name": "./files/the-westerlands.json"
+							}
+						]
+					},
+					{
+						"name": "History",
+						"is_open": false,
+						"layer": 2,
+						"type": "folder",
+						"content": []
+					}
+				]
+			}
+		]
+	}
+]
