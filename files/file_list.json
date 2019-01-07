@@ -1,0 +1,32 @@
+[
+    {
+        "type": "folder",
+        "name": "Project Name",
+        "parent": "root",
+        "children": [
+            {
+                "type": "folder",
+                "name": "Folder 1",
+                "parent": "Folder Name",
+                "children": [
+                    {
+                        "type": "file",
+                        "name": "File 2",
+                        "filename": "test"
+                    }
+                ]
+            },
+            {
+                "type": "folder",
+                "name": "Folder 2",
+                "parent": "Folder Name",
+                "children": []
+            },
+            {
+                "type": "file",
+                "name": "File 1",
+                "filename": "new"
+            }
+        ]
+    }
+]
