@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "bootstrap": "^4.2.1",
     "electron-prebuilt": "^1.4.13",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "marked": "^0.6.0"
   },
   "scripts": {
     "start": "electron ."
