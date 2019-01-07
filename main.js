@@ -1,10 +1,12 @@
 const {app, BrowserWindow} = require('electron') 
 const url = require('url') 
 const path = require('path') 
-fs = require('fs')
+const marked = require('marked');
+const TurndownService = require('turndown')
+const fs = require('fs')
 const {ipcMain} = require('electron')  
-const marked = require('marked')
 
+let turndown = TurndownService();
 let win  
 
 function createWindow() { 
@@ -16,18 +18,30 @@ function createWindow() {
    })) 
 } 
 
-// Event handler for asynchronous incoming messages
+// Handles asynchronously getting file information and parsing it to html
 ipcMain.on('read-file', (event, arg) => {
-   fs.readFile('files/test_page.md', 'utf8', function (err,data) {
+   fs.readFile('files/' + arg.filename + '.md', 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
-      console.log("File Loaded");
-      event.sender.send('recieve-file', '<div>' + marked(data) + '</div>');
+      console.log(arg.filename + " Loaded");
+      event.sender.send('recieve-file', marked(data));
       console.log("File sent to frontend");
     });
-
-   console.log(arg)
 })
+
+// Handles saving files by taking html and parsing it to markdown
+ipcMain.on('save-file', (event, arg) => {
+   fs.writeFile(
+      "files/" + arg.filename, 
+      turndown.turndown(arg.content), 
+      function(err) {
+         if(err) {
+            return console.log(err);
+         }
+         console.log("The file " + arg.filename + " was saved");
+      }
+   ); 
+});
 
 app.on('ready', createWindow)

@@ -1,6 +1,6 @@
-let $ = require('jquery')
-
 const {ipcRenderer} = require('electron')
+
+let $ = require('jquery')
 
 // Async message handler
 ipcRenderer.on('recieve-file', (event, arg) => {
@@ -8,4 +8,11 @@ ipcRenderer.on('recieve-file', (event, arg) => {
 })
 
 // Async message sender
-ipcRenderer.send('read-file', 'html')
+ipcRenderer.send('read-file', {filename: 'new'})
+
+function handleClick() {
+    ipcRenderer.send('save-file', {
+        filename: "new.md",
+        content: $('#main-content').html()
+    })
+}

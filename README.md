@@ -37,9 +37,15 @@
 * Code overhaul
 * remade basic project
 * Rebuilt all html and basic layout
-* Got rid of dropdown menu 
+* Got rid of dropdown menu
 * Split up CSS into smaller files
 * Rewriting all previous JS code
+
+### January 7th 2019
+
+* Switched to saving files as Markdown
+* Parsed Markdown from files into HTML to send to frontend
+* Setup save system to send HTML content to backend to be saved as Markdown
 
 ## MVP Requirements
 
