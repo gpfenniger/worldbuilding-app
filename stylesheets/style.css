@@ -8,6 +8,16 @@
     flex: 5;
 }
 
+.dir-button {
+    background-color: slategray;
+}
+
 .file-button {
-    
+    background-color: white;
+}
+
+.btn {
+    border: solid black 1px;
+    margin: 5px 5px 5px 5px;
+    width: 75px;
 }

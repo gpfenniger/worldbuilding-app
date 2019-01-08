@@ -1,15 +1,18 @@
-
+//TODO
+// Needs some heavy handed refactoring
 
 // Takes in an array of directories and or files 
 // and returns the HTML for them to be displayed
 // on the GUI
-module.exports = function(directoryArray) {
+module.exports = function(directory) {
     var html = "";
 
-    //console.log(directoryArray)
+    html += "<h2>" + directory.name + "</h2>";
+    if (directory.parent != "root")
+        html += "<input type='button' id='" + directory.name + "' class='dir-button btn' onclick='dirClick(this)' value='Back'>";
 
-    if (directoryArray != [])
-        directoryArray.forEach((item) => {
+    if (directory.children != [])
+        directory.children.forEach((item) => {
             if (item.type == "folder") html += makeDirectory(item.name);
             else if (item.type == "file") html += makeFile(item.name);
         });
@@ -18,9 +21,9 @@ module.exports = function(directoryArray) {
 };
 
 function makeDirectory(name) {
-    return "<input type='button' class='dir-button' onclick='dirClick(this)' value='" + name + "'>";
+    return "<input type='button' class='dir-button btn' onclick='dirClick(this)' value='" + name + "'>";
 }
 
 function makeFile(name) {
-    return "<input type='button' type='file-button' onclick='fileClick(this)' value='" + name + "'>";
+    return "<input type='button' class='file-button btn' onclick='fileClick(this)' value='" + name + "'>";
 }

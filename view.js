@@ -14,19 +14,21 @@ ipcRenderer.on('recieve-dir', (event, arg) => {
 // Async message sender
 ipcRenderer.send('read-file', {filename: 'new'});
 
-ipcRenderer.send('get-dir', {current: "root", action: "this"});
+ipcRenderer.send('get-dir', {current: "Project Name", action: "down"});
 
 function handleClick() {
     ipcRenderer.send('save-file', {
-        filename: "new.md",
+        filename: "new",
         content: $('#main-content').html()
     })
 }
 
 function dirClick(btn) {
-    ipcRenderer.send('get-dir', {current: btn.value});
+    if (btn.value != "Back")
+        ipcRenderer.send('get-dir', {current: btn.value, action: "down"});
+    else ipcRenderer.send('get-dir', {current: btn.id, action: "up"});
 }
 
-function fileClick() {
-    alert("File Clicked!")
+function fileClick(btn) {
+    ipcRenderer.send('find-file', {filename: btn.value});
 }
